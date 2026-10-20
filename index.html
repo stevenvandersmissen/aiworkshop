@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c4b5fd">
 <title>GEN-AI IN DE KLAS — samenwerken, niet overnemen · Workshop TSM</title>
 <meta name="description" content="Praktische workshop voor leerkrachten van Technische Scholen Mechelen: leer je middelbare leerlingen om generatieve AI als gesprekspartner in te zetten in plaats van het werk te laten doen. Door Steven Vandersmissen.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23141414'/%3E%3Ctext%20x='16'%20y='25'%20font-size='22'%20text-anchor='middle'%20fill='%23ffe600'%20font-family='Arial'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23141414'/%3E%3Ctext%20x='16'%20y='25'%20font-size='22'%20text-anchor='middle'%20fill='%23c4b5fd'%20font-family='Arial'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
 <style>
 :root{
-  --ink:#141414; --paper:#ffffff; --geel:#ffe600; --rood:#ff3d00;
+  --ink:#141414; --paper:#ffffff; --accent:#c4b5fd; --rood:#ff3d00;
   --oranje:#ff9e00; --groen:#00b34a; --blauw:#2b2bff; --grijs:#f2f1ec;
   --b:3px solid var(--ink);
   --schaduw:5px 5px 0 var(--ink);
@@ -17,47 +18,47 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16.5px}
-::selection{background:var(--ink);color:var(--geel)}
+::selection{background:var(--ink);color:var(--accent)}
 a{color:inherit}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
 section{border-top:4px solid var(--ink);padding:68px 0}
 .mono{font-family:var(--mono)}
 .tag{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--ink);padding:3px 9px;background:var(--paper)}
-.tag--ink{background:var(--ink);color:var(--geel)}
-.tag--rood{background:var(--rood);color:#fff}
+.tag--ink{background:var(--ink);color:var(--accent)}
+.tag--rood{background:var(--rood);color:var(--ink)}
 h1,h2,h3{text-transform:uppercase;line-height:1.05;letter-spacing:-.015em}
 h2{font-size:clamp(1.7rem,3.6vw,2.7rem);margin:12px 0 10px}
 h3{font-size:1.15rem;margin-bottom:8px}
 p{margin:0 0 1em}
 .sec-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-bottom:10px}
-.sec-num{font-size:clamp(2.6rem,7vw,5rem);font-weight:900;background:var(--ink);color:var(--geel);padding:2px 14px;line-height:1.08}
+.sec-num{font-size:clamp(2.6rem,7vw,5rem);font-weight:900;background:var(--ink);color:var(--accent);padding:2px 14px;line-height:1.08}
 .sec-sub{max-width:760px;font-size:1.03rem}
 /* knoppen */
-.btn{display:inline-block;font-weight:900;text-transform:uppercase;letter-spacing:.03em;font-size:.92rem;background:var(--geel);color:var(--ink);border:var(--b);box-shadow:var(--schaduw);padding:13px 22px;cursor:pointer;text-decoration:none;transition:transform .07s ease,box-shadow .07s ease}
+.btn{display:inline-block;font-weight:900;text-transform:uppercase;letter-spacing:.03em;font-size:.92rem;background:var(--accent);color:var(--ink);border:var(--b);box-shadow:var(--schaduw);padding:13px 22px;cursor:pointer;text-decoration:none;transition:transform .07s ease,box-shadow .07s ease}
 .btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
 .btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
-.btn--ink{background:var(--ink);color:var(--geel)}
+.btn--ink{background:var(--ink);color:var(--accent)}
 .btn--paper{background:var(--paper)}
-.btn--rood{background:var(--rood);color:#fff}
-.btn--groen{background:var(--groen);color:#fff}
+.btn--rood{background:var(--rood);color:var(--ink)}
+.btn--groen{background:var(--groen);color:var(--ink)}
 .btn-mini{padding:7px 11px;font-size:.72rem;box-shadow:3px 3px 0 var(--ink)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 /* marquee */
-.mq{overflow:hidden;background:var(--ink);color:var(--geel)}
-.mq--geel{background:var(--geel);color:var(--ink);border-top:4px solid var(--ink)}
+.mq{overflow:hidden;background:var(--ink);color:var(--accent)}
+.mq--accent{background:var(--accent);color:var(--ink);border-top:4px solid var(--ink)}
 .mq-track{display:flex;width:max-content;animation:mq 26s linear infinite}
 .mq-track>span{white-space:nowrap;padding:9px 1.25rem 9px 1.25rem;font-family:var(--mono);font-weight:700;font-size:.85rem;letter-spacing:.06em}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 /* topbar */
 .topbar{position:sticky;top:0;z-index:100;background:var(--ink)}
 .topbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding-top:10px;padding-bottom:10px}
-.brand{color:var(--geel);font-weight:900;text-transform:uppercase;text-decoration:none;font-size:1.05rem;margin-right:auto;line-height:1.1}
+.brand{color:var(--accent);font-weight:900;text-transform:uppercase;text-decoration:none;font-size:1.05rem;margin-right:auto;line-height:1.1}
 .brand span{color:#fff;font-weight:400;font-size:.72rem;display:block;font-family:var(--mono);letter-spacing:.04em}
 .topnav{display:flex;flex-wrap:wrap;gap:2px}
 .topnav a{font-family:var(--mono);font-size:.7rem;font-weight:700;text-decoration:none;color:#fff;padding:5px 8px;border:2px solid transparent;text-transform:uppercase;letter-spacing:.04em}
-.topnav a:hover{color:var(--geel);border-color:var(--geel)}
+.topnav a:hover{color:var(--accent);border-color:var(--accent)}
 /* hero */
-.hero{background:var(--geel);padding:78px 0 70px}
+.hero{background:var(--accent);padding:78px 0 70px}
 .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}
 .hero h1{font-size:clamp(2.5rem,6.8vw,5.1rem);font-weight:900;margin:16px 0 20px}
 .hero h1 .u{background:var(--paper);box-shadow:4px 4px 0 var(--ink);padding:0 12px;display:inline-block;transform:rotate(-1.2deg)}
@@ -69,61 +70,66 @@ p{margin:0 0 1em}
 .badges{position:relative;border:var(--b);background:var(--paper);box-shadow:9px 9px 0 var(--ink);min-height:320px;margin-bottom:54px}
 .badge{position:absolute;border:var(--b);padding:12px 16px;font-weight:900;text-transform:uppercase;font-size:.92rem;box-shadow:4px 4px 0 var(--ink);line-height:1.25}
 .badge b{display:block;font-size:.62rem;font-family:var(--mono);letter-spacing:.1em;opacity:.85}
-.b1{top:26px;left:22px;transform:rotate(-4deg);background:var(--rood);color:#fff}
+.b1{top:26px;left:22px;transform:rotate(-4deg);background:var(--rood);color:var(--ink)}
 .b2{top:100px;right:22px;transform:rotate(3deg);background:var(--blauw);color:#fff}
-.b3{bottom:104px;left:26px;transform:rotate(2deg);background:var(--groen);color:#fff}
-.b4{bottom:26px;right:26px;transform:rotate(-3deg);background:var(--geel)}
+.b3{bottom:104px;left:26px;transform:rotate(2deg);background:var(--groen);color:var(--ink)}
+.b4{bottom:26px;right:26px;transform:rotate(-3deg);background:var(--accent)}
 /* sticker-cluster: op smalle schermen in flow i.p.v. absoluut */
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}}
 @media(max-width:560px){
 .badges{min-height:0;padding:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .badge{position:static;transform:none}
-.badges-cap{position:static;display:block;margin-top:12px}
 }
 .badges-cap{position:absolute;left:0;right:0;bottom:-44px;font-family:var(--mono);font-size:.74rem;font-weight:700;text-align:center}
+@media(max-width:560px){
+  .badges-cap{position:static;display:block;margin-top:12px}
+  .g2,.g3{grid-template-columns:minmax(0,1fr)}
+  .oef{padding:18px;box-shadow:5px 5px 0 var(--ink)}
+  .hero{padding:50px 0 44px}
+}
 /* waarschuwingsstrook */
 .warn{background:var(--ink);color:var(--paper);padding:24px 0;border-bottom:4px solid var(--ink)}
 .warn .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .warn .x{font-size:1.8rem;font-weight:900;color:var(--rood);line-height:1}
-.warn strong{color:var(--geel)}
+.warn strong{color:var(--accent)}
 /* grids & kaarten */
 .grid{display:grid;gap:26px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
 .card{background:var(--paper);border:var(--b);box-shadow:var(--schaduw);padding:22px;position:relative}
-.card--geel{background:var(--geel)}
+.card--accent{background:var(--accent)}
 .card--oranje{background:var(--oranje)}
 .card--ink{background:var(--ink);color:var(--paper)}
-.card--rood{background:var(--rood);color:#fff}
+.card--rood{background:var(--rood);color:var(--ink)}
 .card--blauw{background:var(--blauw);color:#fff}
 .card--grijs{background:var(--grijs)}
 .card h3{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.numchip{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:var(--b);background:var(--geel);color:var(--ink);font-weight:900;flex:none;box-shadow:2px 2px 0 var(--ink)}
+.numchip{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:var(--b);background:var(--accent);color:var(--ink);font-weight:900;flex:none;box-shadow:2px 2px 0 var(--ink)}
 .card--rood .numchip,.card--blauw .numchip{background:var(--paper)}
 .card p:last-child{margin-bottom:0}
-.sec--geel{background:var(--geel)}
+.sec--accent{background:var(--accent)}
 .bg-grid{background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:34px 34px}
 .kern{border:var(--b);background:var(--paper);box-shadow:8px 8px 0 var(--ink);padding:26px 28px;display:flex;gap:18px;align-items:flex-start;margin-top:34px}
 .kern .k{font-size:2.2rem;line-height:1;flex:none}
 .kern p{font-size:1.12rem;font-weight:700;margin:0}
-.tip{border:var(--b);border-left:10px solid var(--geel);background:var(--paper);padding:14px 18px;margin-top:20px;box-shadow:4px 4px 0 var(--ink)}
+.tip{border:var(--b);border-left:10px solid var(--accent);background:var(--paper);padding:14px 18px;margin-top:20px;box-shadow:4px 4px 0 var(--ink)}
 .tip b.t{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px}
-.big-say{border:var(--b);background:var(--ink);color:var(--geel);box-shadow:8px 8px 0 var(--ink);padding:30px;font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:900;text-transform:uppercase;line-height:1.3}
+.big-say{border:var(--b);background:var(--ink);color:var(--accent);box-shadow:8px 8px 0 var(--ink);padding:30px;font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:900;text-transform:uppercase;line-height:1.3}
 .big-say small{display:block;font-family:var(--mono);font-weight:400;font-size:.8rem;color:#fff;margin-top:12px;text-transform:none;letter-spacing:0}
 /* promptkaart */
 .promptcard{border:var(--b);background:var(--paper);box-shadow:var(--schaduw);margin-top:14px}
-.pc-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:var(--b);background:var(--ink);color:var(--geel);padding:7px 12px;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.06em}
-.pc-bar--geel{background:var(--geel);color:var(--ink)}
+.pc-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:var(--b);background:var(--ink);color:var(--accent);padding:7px 12px;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.06em}
+.pc-bar--accent{background:var(--accent);color:var(--ink)}
 .promptcard pre{font-family:var(--mono);font-size:.9rem;line-height:1.55;padding:16px;white-space:pre-wrap;margin:0}
 /* chat-simulatie */
 .chat{border:var(--b);box-shadow:var(--schaduw);background:var(--paper)}
 .chat-label{padding:8px 14px;border-bottom:var(--b);font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.chat-label--slecht{background:var(--rood);color:#fff}
-.chat-label--goed{background:var(--groen);color:#fff}
+.chat-label--slecht{background:var(--rood);color:var(--ink)}
+.chat-label--goed{background:var(--groen);color:var(--ink)}
 .turn{padding:14px 16px;border-bottom:2px dashed var(--ink)}
 .turn:last-child{border-bottom:none}
 .turn .who{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:5px}
-.turn--ik{background:var(--geel)}
+.turn--ik{background:var(--accent)}
 .turn--ai{background:var(--grijs)}
 .chat--slecht .turn--ik{background:#ffd9cf}
 .chat-note{font-family:var(--mono);font-size:.76rem;font-weight:700;margin-top:14px}
@@ -132,16 +138,16 @@ p{margin:0 0 1em}
 .oef-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:8px}
 .oef-head h3{font-size:clamp(1.25rem,2.6vw,1.7rem);margin:0}
 .oef-sub{margin-bottom:24px;max-width:820px}
-.scorebar{font-family:var(--mono);font-weight:700;font-size:.84rem;border:var(--b);background:var(--geel);display:inline-block;padding:6px 12px;margin-bottom:16px}
+.scorebar{font-family:var(--mono);font-weight:700;font-size:.84rem;border:var(--b);background:var(--accent);display:inline-block;padding:6px 12px;margin-bottom:16px}
 /* verkeerslicht-quiz */
 .lt-q{border:var(--b);background:var(--paper);padding:18px;margin-bottom:20px}
 .lt-q .vraag{font-weight:700;margin-bottom:12px}
 .lt-btns{display:flex;gap:10px;flex-wrap:wrap}
 .lt-btn{flex:1;min-width:110px;padding:12px 8px;border:var(--b);font-weight:900;text-transform:uppercase;font-size:.8rem;cursor:pointer;background:var(--paper);box-shadow:3px 3px 0 var(--ink);transition:transform .07s,box-shadow .07s;font-family:Arial,Helvetica,sans-serif}
 .lt-btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.lt-rood{background:var(--rood);color:#fff}
+.lt-rood{background:var(--rood);color:var(--ink)}
 .lt-oranje{background:var(--oranje)}
-.lt-groen{background:var(--groen);color:#fff}
+.lt-groen{background:var(--groen);color:var(--ink)}
 .lt-q.gedaan .lt-btn{pointer-events:none;opacity:.4}
 .lt-q.gedaan .lt-btn.correct{opacity:1;outline:4px solid var(--ink)}
 .lt-q.gedaan .lt-btn.chosen-wrong{opacity:.75;text-decoration:line-through}
@@ -153,28 +159,28 @@ p{margin:0 0 1em}
 .verdict{font-family:var(--mono);font-weight:700;font-size:.95rem;border:var(--b);background:var(--paper);padding:13px 15px;margin-top:16px;box-shadow:4px 4px 0 var(--ink)}
 /* prompt-doctor */
 .crime{border:var(--b);background:#ffd9cf;box-shadow:var(--schaduw);margin:14px 0 6px}
-.crime .pc-bar{background:var(--rood);color:#fff;border-bottom:var(--b)}
+.crime .pc-bar{background:var(--rood);color:var(--ink);border-bottom:var(--b)}
 .crime pre{font-weight:700}
 .pd-step{border:var(--b);background:var(--paper);padding:20px;margin-bottom:18px}
 .pd-vraag{font-weight:900;text-transform:uppercase;margin-bottom:4px}
 .pd-opt{display:block;width:100%;text-align:left;font-family:var(--mono);font-size:.88rem;padding:13px 14px;border:var(--b);background:var(--paper);cursor:pointer;margin-top:12px;box-shadow:3px 3px 0 var(--ink);line-height:1.5;transition:transform .07s,box-shadow .07s}
-.pd-opt:hover:not(:disabled){background:var(--geel);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.pd-opt:hover:not(:disabled){background:var(--accent);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
 .pd-opt:disabled{cursor:default}
-.pd-opt.is-right{background:var(--groen);color:#fff}
-.pd-opt.is-wrong{background:var(--rood);color:#fff}
+.pd-opt.is-right{background:var(--groen);color:var(--ink)}
+.pd-opt.is-wrong{background:var(--rood);color:var(--ink)}
 .pd-fb{display:none;margin-top:12px;font-size:.92rem;border-left:8px solid var(--blauw);padding:9px 12px;background:var(--grijs)}
 .pd-fb.on{display:block}
 .pd-next{margin-top:14px}
 .meter{border:var(--b);background:var(--paper);height:30px;position:relative;margin-top:8px}
-.meter i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--geel) 0 12px,var(--ink) 12px 15px);transition:width .5s ease}
+.meter i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--accent) 0 12px,var(--ink) 12px 15px);transition:width .5s ease}
 .meter-label{font-family:var(--mono);font-size:.8rem;font-weight:700;margin-top:8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
 /* hallucinatiejager */
 .hs-wrap{border:var(--b);background:var(--paper);padding:22px;line-height:2.2;font-size:1rem;box-shadow:var(--schaduw)}
 .hs{font:inherit;line-height:inherit;background:transparent;border:none;border-bottom:3px dotted var(--ink);padding:1px 3px;cursor:pointer;text-align:left;color:inherit}
-.hs:hover{background:var(--geel)}
-.hs.sel{background:var(--ink);color:var(--geel);border-bottom-color:var(--ink)}
+.hs:hover{background:var(--accent)}
+.hs.sel{background:var(--ink);color:var(--accent);border-bottom-color:var(--ink)}
 .hs.oksel{background:#c9f2d9;border-bottom:3px solid var(--groen)}
-.hs.hit{background:var(--rood);color:#fff;border-bottom-color:var(--ink)}
+.hs.hit{background:var(--rood);color:var(--ink);border-bottom-color:var(--ink)}
 .hs.miss{background:#ffd9cf;border-bottom:3px solid var(--rood)}
 .hs.falsealarm{background:var(--blauw);color:#fff}
 .hs-legend{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;font-family:var(--mono);font-size:.72rem;font-weight:700}
@@ -182,41 +188,41 @@ p{margin:0 0 1em}
 .hs-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:var(--b);background:var(--paper);margin-top:10px;font-size:.92rem}
 .hs-item .v{font-family:var(--mono);font-weight:700;flex:none;font-size:.78rem;padding:1px 6px;border:2px solid var(--ink)}
 .v.ok{background:#c9f2d9}
-.v.bad{background:var(--rood);color:#fff;border-color:var(--ink)}
+.v.bad{background:var(--rood);color:var(--ink);border-color:var(--ink)}
 .v.meh{background:var(--blauw);color:#fff;border-color:var(--ink)}
 /* checklist */
 .chk{display:flex;gap:14px;align-items:flex-start;border:var(--b);background:var(--paper);padding:14px 16px;margin-top:12px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);color:var(--ink)}
 .chk input{width:26px;height:26px;flex:none;accent-color:var(--ink);margin-top:1px;cursor:pointer}
 .chk span{font-weight:700}
-.chk.done{background:var(--geel)}
+.chk.done{background:var(--accent)}
 /* klascontract */
 .rulepool{display:grid;gap:12px;grid-template-columns:1fr}
 @media(min-width:760px){.rulepool{grid-template-columns:1fr 1fr}}
 .rule{display:flex;gap:12px;align-items:flex-start;border:var(--b);background:var(--paper);padding:14px 16px;cursor:pointer;font-size:.95rem}
 .rule input{width:22px;height:22px;flex:none;accent-color:var(--ink)}
-.rule.checked{background:var(--geel)}
+.rule.checked{background:var(--accent)}
 .contract{border:var(--b);background:var(--paper);box-shadow:var(--schaduw)}
 .contract ol{padding:22px 22px 22px 48px}
 .contract li{margin-bottom:12px;font-weight:700}
 /* slot & certificaat */
 #slot{background:var(--ink);color:var(--paper)}
-#slot .sec-num{background:var(--geel);color:var(--ink)}
-#slot .tag{border-color:var(--geel);color:var(--geel);background:transparent}
-#slot .card{background:#201f1c;color:var(--paper);border-color:var(--geel);box-shadow:5px 5px 0 var(--geel)}
-#slot .tip{background:#201f1c;color:var(--paper);border-color:var(--geel);border-left-color:var(--geel);box-shadow:4px 4px 0 var(--geel)}
-#slot input[type=text]{flex:1;min-width:220px;border:3px solid var(--geel);background:var(--paper);color:var(--ink);padding:13px 14px;font-family:var(--mono);font-weight:700;font-size:1rem}
+#slot .sec-num{background:var(--accent);color:var(--ink)}
+#slot .tag{border-color:var(--accent);color:var(--accent);background:transparent}
+#slot .card{background:#201f1c;color:var(--paper);border-color:var(--accent);box-shadow:5px 5px 0 var(--accent)}
+#slot .tip{background:#201f1c;color:var(--paper);border-color:var(--accent);border-left-color:var(--accent);box-shadow:4px 4px 0 var(--accent)}
+#slot input[type=text]{flex:1;min-width:220px;border:3px solid var(--accent);background:var(--paper);color:var(--ink);padding:13px 14px;font-family:var(--mono);font-weight:700;font-size:1rem}
 .dip-row{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0 8px}
-.cert{display:none;background:var(--geel);color:var(--ink);border:6px solid var(--paper);box-shadow:10px 10px 0 var(--geel);padding:46px 34px;margin-top:30px;position:relative;text-align:center}
+.cert{display:none;background:var(--accent);color:var(--ink);border:6px solid var(--paper);box-shadow:10px 10px 0 var(--accent);padding:46px 34px;margin-top:30px;position:relative;text-align:center}
 .cert .c-top{font-family:var(--mono);letter-spacing:.22em;font-weight:700;font-size:.76rem}
 .cert h3{font-size:clamp(1.5rem,4vw,2.5rem);margin:16px 0 6px}
 .cert .c-name{font-size:clamp(1.35rem,3.4vw,2.15rem);font-weight:900;text-decoration:underline;text-underline-offset:9px;text-decoration-thickness:4px;margin:20px 0 8px;word-break:break-word}
 .cert .c-meta{font-family:var(--mono);font-size:.85rem;margin-top:18px;line-height:1.9}
-.cert .stamp{position:absolute;top:18px;right:14px;transform:rotate(7deg);border:4px solid var(--rood);color:var(--rood);padding:8px 12px;font-weight:900;font-size:.72rem;text-transform:uppercase;background:var(--paper);box-shadow:3px 3px 0 var(--ink);font-family:var(--mono);letter-spacing:.06em}
+.cert .stamp{position:absolute;top:18px;right:14px;transform:rotate(7deg);border:4px solid var(--ink);color:var(--ink);padding:8px 12px;font-weight:900;font-size:.72rem;text-transform:uppercase;background:var(--paper);box-shadow:3px 3px 0 var(--ink);font-family:var(--mono);letter-spacing:.06em}
 @media(max-width:640px){.cert .stamp{position:static;display:inline-block;margin:0 auto 16px;transform:rotate(-2deg)}}
 /* footer */
-footer{background:var(--ink);color:var(--paper);border-top:4px solid var(--geel);padding:36px 0}
+footer{background:var(--ink);color:var(--paper);border-top:4px solid var(--accent);padding:36px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:space-between;font-family:var(--mono);font-size:.8rem;line-height:1.8}
-footer b{color:var(--geel)}
+footer b{color:var(--accent)}
 @media(max-width:760px){
 .brand span{display:none}
 .topnav{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
@@ -227,9 +233,25 @@ footer b{color:var(--geel)}
 .mts{margin-top:14px}
 .hide{display:none}
 .center{text-align:center}
-@media(prefers-reduced-motion:reduce){.mq-track{animation:none}.btn,.lt-btn,.pd-opt{transition:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .btn,.lt-btn,.pd-opt{transition:none}
+}
 a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{outline:4px dashed var(--rood);outline-offset:2px}
-@media print{.topbar,.mq,.hero-cta,.no-print{display:none!important}body{font-size:12pt}section{padding:30px 0}}
+@media print{
+  @page{size:A4 landscape;margin:12mm}
+  body{font-size:12pt}
+  body *{visibility:hidden!important}
+  #cert,#cert *{visibility:visible!important}
+  #cert{
+    display:block!important;
+    position:absolute!important;
+    left:0;top:0;width:100%;margin:0;padding:28px 22px;
+    box-shadow:none;border:3px solid var(--ink);break-inside:avoid;
+  }
+  section{padding:0}
+}
 </style>
 </head>
 <body>
@@ -254,7 +276,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       <a href="#m4">04 Prompten</a>
       <a href="#m5">05 Checken</a>
       <a href="#m6">06 Klas</a>
-      <a href="#slot">Diploma</a>
+      <a href="#bronnen">Bronnen</a>
+      <a href="#slot">Engagement</a>
     </nav>
   </div>
 </header>
@@ -274,7 +297,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       <p class="lead">Een praktische workshop voor leerkrachten: leer je middelbare leerlingen om generatieve AI in te zetten als gesprekspartner — en het denkwerk wérkelijk te doen. Met voorbeelden per vak, kant-en-klare prompts en vier interactieve oefeningen.</p>
       <div class="hero-meta">
         <span class="meta-chip">door Steven Vandersmissen</span>
-        <span class="meta-chip">± 2 uur · eigen tempo</span>
+        <span class="meta-chip">± 2 uur 15 min · eigen tempo</span>
         <span class="meta-chip">laptop mee</span>
         <span class="meta-chip">geen AI-ervaring nodig</span>
       </div>
@@ -312,16 +335,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
     <p class="sec-sub">De vraag of jouw leerlingen generatieve AI gebruiken, hoef je je niet meer te stellen — alleen <em>hoe</em>. Drie redenen om het gesprek nu te voeren:</p>
     <div class="grid g3 mt">
       <div class="card">
-        <h3><span class="numchip">1</span> Verbieden is fictie</h3>
-        <p>Zonder begeleiding gebruiken leerlingen AI stiekem — en fout: kopiëren zonder te denken. Een beleid dat alleen verbiedt, verplaatst het gebruik naar onder de tafel en leert niemand iets.</p>
+        <h3><span class="numchip">1</span> Verbieden volstaat niet</h3>
+        <p>Een verbod kan in bepaalde situaties terecht zijn, bijvoorbeeld tijdens een toets. Maar een verbod zonder begeleiding leert leerlingen niet hoe ze verantwoord, kritisch en transparant met AI omgaan.</p>
       </div>
-      <div class="card card--geel">
+      <div class="card card--accent">
         <h3><span class="numchip">2</span> Het is een basisvaardigheid</h3>
-        <p>In vrijwel elke job — zeker in de techniek — werken mensen straks mét AI. Wie leerde er kritisch mee samen te werken, heeft een voorsprong. Wie alleen leerde het te vermijden, niet.</p>
+        <p>In steeds meer studie- en werkomgevingen wordt met AI gewerkt. Leerlingen hebben baat bij kritisch leren omgaan met zulke tools, zonder aan te nemen dat AI in elke taak of elk beroep nodig is.</p>
       </div>
       <div class="card">
         <h3><span class="numchip">3</span> Leren is het doel</h3>
-        <p>Een opdracht heeft alleen waarde als de leerling zelf denkt, kiest en formuleert. AI mag dat denken aanwakkeren — nóóit vervangen. Dat onderscheid leer je hier sturen.</p>
+        <p>Een opdracht heeft leerwaarde wanneer leerlingen zelf denken, keuzes maken en formuleren. AI kan dat denkwerk ondersteunen, maar mag het leerdoel niet ongemerkt overnemen. Dat onderscheid leer je hier bewaken.</p>
       </div>
     </div>
     <div class="kern">
@@ -341,8 +364,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <h2>Hoe werkt gen-AI? In 90 seconden.</h2>
       </div>
     </div>
-    <p class="sec-sub">Je kunt geen regels geven over iets dat je niet kent. Gelukkig volstaat één inzicht om álles te verklaren — van de vlotte taal tot de verzonne bronnen:</p>
-    <div class="big-say mt">Gen-AI is een voorspelmachine.<br>Het schrijft geen waarheid — het schrijft het <u>meest waarschijnlijke</u> volgende woord.<small>Daarom klinkt het zo vlot… en daarom zegt het zo gerust dingen die nergens op slaan.</small></div>
+    <p class="sec-sub">Je kunt geen regels geven over iets dat je niet kent. Eén inzicht helpt veel verklaren — van de vlotte taal tot verzonnen bronnen:</p>
+    <div class="big-say mt">Gen-AI voorspelt wat waarschijnlijk volgt.<br>Vaak: het volgende <u>token</u>.<small>Een token kan een woord, woorddeel of leesteken zijn. Vloeiende taal is geen bewijs dat informatie klopt.</small></div>
     <div class="grid g2 mt">
       <div class="card">
         <h3>🎲 Hallucinaties</h3>
@@ -350,15 +373,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       </div>
       <div class="card">
         <h3>👍 De ja-zegger</h3>
-        <p>AI zegt graag wat je wilt horen. Vraag "heb ik gelijk?" en je krijgt meestal "ja, sterk idee!". Vraag daarom áltijd ook om tegengeluid, tegenargumenten en kritiek.</p>
+        <p>Sommige AI-antwoorden nemen de formulering of aannames van de gebruiker te gemakkelijk over. Vraag daarom ook om tegenargumenten, alternatieve verklaringen en kritiek.</p>
       </div>
       <div class="card">
-        <h3>📚 Getraind op oud internet</h3>
-        <p>AI leerde van internetteksten: met fouten, vooroordelen en verouderde informatie. Het klinkt dus gemiddeld — en gemiddeld is niet waar, en zeker niet actueel.</p>
+        <h3>📚 Getraind op uiteenlopende gegevens</h3>
+        <p>Trainingsgegevens verschillen per model en kunnen fouten en vooroordelen bevatten. De kennis van een model kan onvolledig of verouderd zijn.</p>
       </div>
       <div class="card card--rood">
         <h3>🔒 Geen magie, wél data</h3>
-        <p>Alles wat je intikt, kan in databanken belanden. Regels voor de klas: geen namen, cijfers, foto's of adressen in prompts — van niemand. Anonimiseren is de norm.</p>
+        <p>Wat er met ingevoerde gegevens gebeurt, hangt af van de tool, accountinstellingen en voorwaarden. Voer geen persoonsgegevens of vertrouwelijke leerlinggegevens in zonder een door de school goedgekeurde werkwijze. Anonimiseer prompts.</p>
       </div>
     </div>
     <div class="tip">
@@ -369,7 +392,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
 </section>
 
 <!-- ============ MODULE 2: GRENZEN ============ -->
-<section id="m2" class="sec--geel">
+<section id="m2" class="sec--accent">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">02</span>
@@ -390,21 +413,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <p><strong>Wanneer?</strong> AI mag assisteren (feedback, uitleg, herschrijfronde) ná een eigen poging van de leerling.</p>
         <p><strong>Voorwaarden:</strong> eigen versie blijft de basis · de leerling voert verbeteringen zelf uit · vermelding in de AI-verklaring · bij twijfel vraag je vooraf aan de leerkracht.</p>
       </div>
-      <div class="card" style="background:var(--groen);color:#fff">
+      <div class="card" style="background:var(--groen);color:var(--ink)">
         <h3>✓ Groen — samen</h3>
         <p><strong>Wanneer?</strong> AI mag meewerken als sparringpartner, oefenpartner, hintgever of corrector van een éigen tekst. Denk: oefenvragen, gesprekken oefenen, plannen, uitleg op maat.</p>
         <p><strong>Norm:</strong> melden is altijd de regel — groen betekent "samen", niet "stiekem".</p>
       </div>
     </div>
     <div class="grid g3 mt">
-      <div class="card card--ink"><h3 style="gap:8px">1 · Vermelden</h3><p style="margin:0">Altijd, via de AI-verklaring (module 6). Wat je niet kunt uitleggen, heb je niet zelf gedaan.</p></div>
+      <div class="card card--ink"><h3 style="gap:8px">1 · Vermelden</h3><p style="margin:0">Altijd, via de AI-verklaring (module 6). Wat je gebruikt, moet je kunnen verantwoorden. Onvoldoende uitleg is aanleiding voor een gesprek, niet automatisch een oordeel.</p></div>
       <div class="card card--ink"><h3 style="gap:8px">2 · Checken</h3><p style="margin:0">AI-output is een hypothese, geen waarheid. Het controle-ritueel staat in module 5.</p></div>
-      <div class="card card--ink"><h3 style="gap:8px">3 · Eigen arbeid</h3><p style="margin:0">De ultieme toets, ook voor jezelf als leerkracht: kan de leerling zijn werk mondeling verdedigen?</p></div>
+      <div class="card card--ink"><h3 style="gap:8px">3 · Eigen arbeid</h3><p style="margin:0">Een nuttige controlevraag is of de leerling eigen keuzes en stappen kan uitleggen. Een mondelinge verdediging helpt inzicht toetsen, maar bewijst op zichzelf geen auteurschap.</p></div>
     </div>
     <div class="grid g2 mt">
       <div class="card">
         <h3>🎂 Leeftijd &amp; privacy</h3>
-        <p style="margin:0">De meeste AI-tools vereisen 13+ en onder de 18 vaak toestemming van ouders — check de gebruiksvoorwaarden van de tool die je kiest. Voor jongere leerlingen: demonstreren op het grote scherm. En altijd: anonimiseer je prompts.</p>
+        <p style="margin:0">Minimumleeftijden en regels voor ouderlijke toestemming verschillen per tool en land. Controleer de voorwaarden én het schoolbeleid. Voor jongere leerlingen: demonstreer alleen met een goedgekeurde tool en gebruik geen persoonsgegevens.</p>
       </div>
       <div class="card">
         <h3>📋 Schoolbeleid eerst</h3>
@@ -418,10 +441,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <span class="tag tag--rood">Oefening 1 · 9 situaties</span>
         <h3>Jouw verkeerslicht</h3>
       </div>
-      <p class="oef-sub">Negen echte situaties uit het klaslokaal. Wat zet jij op? Klik <strong>rood</strong>, <strong>oranje</strong> of <strong>groen</strong> — je krijgt meteen uitleg. Twijfel niet te lang: je mag daarna altijd bijsturen.</p>
-      <div class="scorebar" id="lt-score">GEANTWOORD 0/9 · JUIST 0</div>
+      <p class="oef-sub">Negen situaties uit het klaslokaal. Klik <strong>rood</strong>, <strong>oranje</strong> of <strong>groen</strong>; je krijgt meteen uitleg. Wil je opnieuw proberen? Gebruik na afloop de knop ‘Opnieuw’ om alle situaties opnieuw te beantwoorden.</p>
+      <div class="scorebar" id="lt-score" aria-live="polite" aria-atomic="true">GEANTWOORD 0/9 · JUIST 0</div>
       <div id="lt-quiz"></div>
-      <div class="verdict hide" id="lt-verdict"></div>
+      <div class="verdict hide" id="lt-verdict" aria-live="polite" aria-atomic="true"></div>
       <div class="mt no-print"><button class="btn btn--paper btn-mini" id="lt-reset" type="button">↺ Opnieuw</button></div>
     </div>
   </div>
@@ -443,7 +466,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <h3>ROL 1 · De sparringpartner</h3>
         <p>Helpt het denkwerk op gang: brainstormen, een stelling aanscherpen, tegenspraak. De leerling kiest — en kiezen is leren.</p>
         <div class="promptcard">
-          <div class="pc-bar"><span>PROMPT · SPARRINGPARTNER</span><button class="btn btn--geel btn-mini copybtn" type="button">KOPIEER</button></div>
+          <div class="pc-bar"><span>PROMPT · SPARRINGPARTNER</span><button class="btn btn--accent btn-mini copybtn" type="button">KOPIEER</button></div>
           <pre>Ik moet [opdracht] maken over [onderwerp]. Schrijf niets voor mij. Stel me eerst 3 vragen over wat ik al weet. Help me daarna mijn eigen stelling scherper te formuleren en geef me 3 tegenvragen die ik moet beantwoorden.</pre>
         </div>
         <div class="tip" style="box-shadow:none;margin-top:14px"><b class="t">Let op</b>AI levert ideeën, de leerling beslist. Geen keuze gemaakt = niets geleerd.</div>
@@ -452,7 +475,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <h3>ROL 2 · De feedbackgever</h3>
         <p>Kijkt mee naar een éigen tekst en geeft aandachtspunten. De verbetering doet de leerling zelf — anders is het spookschrijverij.</p>
         <div class="promptcard">
-          <div class="pc-bar"><span>PROMPT · FEEDBACKGEVER</span><button class="btn btn--geel btn-mini copybtn" type="button">KOPIEER</button></div>
+          <div class="pc-bar"><span>PROMPT · FEEDBACKGEVER</span><button class="btn btn--accent btn-mini copybtn" type="button">KOPIEER</button></div>
           <pre>Dit is mijn eigen tekst: [tekst plakken]. Geef feedback in maximaal 5 punten over structuur, argumentatie en duidelijkheid. Herschrijf niets zelf. Stel liever vragen dan dat je oplossingen geeft.</pre>
         </div>
         <div class="tip" style="box-shadow:none;margin-top:14px"><b class="t">Let op</b>Alleen ná een eigen versie, en altijd met vermelding (AI-verklaring).</div>
@@ -461,7 +484,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <h3>ROL 3 · De hintgever</h3>
         <p>Geeft één duwtje in de juiste richting, nooit het antwoord. De klassieke studiegenoot — maar beschikbaar om 22 uur 's avonds.</p>
         <div class="promptcard">
-          <div class="pc-bar"><span>PROMPT · HINTGEEVER</span><button class="btn btn--geel btn-mini copybtn" type="button">KOPIEER</button></div>
+          <div class="pc-bar"><span>PROMPT · HINTGEEVER</span><button class="btn btn--accent btn-mini copybtn" type="button">KOPIEER</button></div>
           <pre>Ik zit vast bij [oefening]. Dit heb ik al geprobeerd: [eigen poging]. Geef me één kleine hint per keer, nooit de oplossing. Vraag na elke hint wat ik zelf nu zie.</pre>
         </div>
         <div class="tip" style="box-shadow:none;margin-top:14px"><b class="t">Let op</b>Eerst écht zelf proberen. Een hint op nul inspanning is gewoon een antwoord.</div>
@@ -470,7 +493,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <h3>ROL 4 · De oefenpartner</h3>
         <p>Toetst de leerling in plaats van andersom. Goudwaardig voor examens, mondelingen en praktijkattesten.</p>
         <div class="promptcard">
-          <div class="pc-bar"><span>PROMPT · OEFENPARTNER</span><button class="btn btn--geel btn-mini copybtn" type="button">KOPIEER</button></div>
+          <div class="pc-bar"><span>PROMPT · OEFENPARTNER</span><button class="btn btn--accent btn-mini copybtn" type="button">KOPIEER</button></div>
           <pre>Toets me over [hoofdstuk] op niveau van [jaar]. Stel één vraag per keer en wacht op mijn antwoord. Verbeter mijn antwoord kort en stel daarna de volgende, iets moeilijkere vraag.</pre>
         </div>
         <div class="tip" style="box-shadow:none;margin-top:14px"><b class="t">Let op</b>De leerling antwoordt zelf — AI corrigeert pas nadien.</div>
@@ -479,7 +502,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
 
     <div class="kern">
       <span class="k" aria-hidden="true">★</span>
-      <p>DE GOUDEN REGEL: <u>de leerling stelt de vragen, trekt de beslissingen en levert eigen werk af.</u> AI adviseert — de leerling blijft regisseur.</p>
+      <p>DE GOUDEN REGEL: <u>de leerling stelt vragen, neemt beslissingen en levert eigen werk af.</u> AI adviseert — de leerling blijft regisseur.</p>
     </div>
 
     <h3 class="mt" style="font-size:1.5rem">Zo klinkt het in de praktijk</h3>
@@ -515,7 +538,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       </div>
       <div class="card card--grijs">
         <span class="tag tag--ink">Nederlands</span>
-        <p class="mts" style="margin-bottom:0">AI als lezerspanel: "Lees mijn betoog en stel 3 vragen waar een sceptische lezer zou twijfelen. Herschrijf niets." De herwerking is en blijft de taak van de leerling.</p>
+        <p class="mts" style="margin-bottom:0">AI als lezerspanel: "Lees mijn betoog en stel 3 vragen waar een sceptische lezer zou twijfelen. Herschrijf niets." De leerling blijft verantwoordelijk voor de herwerking.</p>
       </div>
       <div class="card card--grijs">
         <span class="tag tag--ink">Frans &amp; Engels</span>
@@ -533,7 +556,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
   </div>
 </section>
 <!-- ============ MODULE 4: PROMPTEN ============ -->
-<section id="m4" class="sec--geel">
+<section id="m4" class="sec--accent">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">04</span>
@@ -549,23 +572,23 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       <div class="card"><h3><span class="numchip">3</span> Eén stap per keer</h3><p>Een goed gesprek gaat heen en weer. Vraag één ding, reageer, vraag verder. Zo blijft de leerling aan het roer.</p></div>
       <div class="card"><h3><span class="numchip">4</span> Denkdwang inbouwen</h3><p>Laat AI eerst vragen stellen: "vraag me wat ik al weet". Dan denkt de leerling vóór de machine, niet na.</p></div>
       <div class="card"><h3><span class="numchip">5</span> Sluit af met check</h3><p>Elk gesprek eindigt in module 5: klopt dit? Kan ik het verdedigen? En vermeld wat AI deed.</p></div>
-      <div class="card card--ink"><h3 style="gap:8px">Vertaalregel</h3><p style="margin:0">Vraag je leerlingen elke prompt te herschrijven tot er ergens een <strong>vraagteken</strong> staat aan hén gericht. Geen vraagteken aan de leerling? Dan doet AI het denken.</p></div>
+      <div class="card card--ink"><h3 style="gap:8px">Vertaalregel</h3><p style="margin:0">Vraag je leerlingen na te gaan welke denkstap ze zelf moeten zetten en welke bijdrage van hen verwacht wordt. Een vraagteken op zich garandeert geen leerwinst; de leerling moet zelf keuzes maken, antwoorden formuleren en controleren.</p></div>
     </div>
 
-    <h3 class="mt" style="font-size:1.5rem">RTF: het basisskelet van elke prompt</h3>
-    <p class="sec-sub" style="margin-top:10px">Drie bouwstenen die elke prompt beter maken — van de ghostwriter-vraag tot de maatjes-dialoog. Leer ze aan je leerlingen als vaste formule:</p>
+    <h3 class="mt" style="font-size:1.5rem">RTF: een bruikbaar basisskelet</h3>
+    <p class="sec-sub" style="margin-top:10px">Drie bouwstenen die veel prompts overzichtelijker maken — van de ghostwriter-vraag tot de maatjes-dialoog. Leer ze aan als hulpmiddel, niet als verplichte formule voor elke situatie:</p>
     <div class="grid g3 mt">
       <div class="card"><h3><span class="numchip">R</span> Role — wie is AI?</h3><p>Geef AI een rol die past bij de opdracht: <em>"Je bent een leerkracht wiskunde van het 3e middelbaar."</em> Een goede rol stuurt taal, niveau en toon.</p></div>
       <div class="card"><h3><span class="numchip">T</span> Task — wat moet er gebeuren?</h3><p>Formuleer de taak als actie mét context: <em>"Toets me met oefenvragen over afgeleiden."</em> In dit model: vraag hulp, géén eindproduct (principe 2).</p></div>
       <div class="card"><h3><span class="numchip">F</span> Format — in welke vorm?</h3><p>Bepaal de vorm: <em>"Eén vraag per keer, wacht op mijn antwoord, corrigeer kort."</em> Het format is jouw regisseurschap in actie.</p></div>
     </div>
     <div class="promptcard mt">
-      <div class="pc-bar"><span>RTF IN ACTIE — VOORBEELDPROMPT</span><button class="btn btn--geel btn-mini copybtn" type="button">KOPIEER</button></div>
+      <div class="pc-bar"><span>RTF IN ACTIE — VOORBEELDPROMPT</span><button class="btn btn--accent btn-mini copybtn" type="button">KOPIEER</button></div>
       <pre>[R] Je bent een leerkracht Nederlands van het 4e secundair.
 [T] Ik schreef al een eigen betoog. Stel me 3 scherpe tegenvragen over mijn argumentatie.
 [F] Stel één vraag per keer en wacht op mijn antwoord. Geef geen kant-en-klare zinnen.</pre>
     </div>
-    <div class="tip"><b class="t">RTF+ — de vierde bouwsteen</b>Zorg dat er in R, T of F altijd een vraag of opdracht aan dé leerling staat ("wacht op mijn antwoord", "vraag me eerst wat ik al weet"). Zonder dat plusje is RTF gewoon een nettere ghostwriter.</div>
+    <div class="tip"><b class="t">RTF+ — de vierde bouwsteen</b>Zorg dat er in R, T of F een duidelijke denkstap voor de leerling staat, bijvoorbeeld "wacht op mijn antwoord" of "vraag me eerst wat ik al weet". Zonder die eigen bijdrage wordt RTF al snel een nettere ghostwriter.</div>
 
     <h3 class="mt" style="font-size:1.5rem">Waar is de meerwaarde? Zes keer winst</h3>
     <p class="sec-sub" style="margin-top:10px">Waarom al die moeite met goed samenwerken? Omdat het iets oplevert wat gewone opdrachten en klassiek huiswerk niet kunnen. Zes voorbeelden uit de praktijk — met de winst er telkens netjes bij:</p>
@@ -583,7 +606,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       <div class="card card--grijs">
         <span class="tag tag--ink">Praktijk &amp; veiligheid · oefenpartner</span>
         <p class="mts">Vóór de stage toetst AI met situatievragen over de veiligheidsprocedure, één per keer, met meteen uitleg bij een fout antwoord.</p>
-        <p style="margin:0"><strong>MEERWAARDE →</strong> oneindig herhalen met onmiddellijke feedback vóór het echte werk. Wie zo naar het atelier gaat, maakt minder fouten mét gevolg.</p>
+        <p style="margin:0"><strong>MEERWAARDE →</strong> oneindig herhalen met onmiddellijke feedback vóór het echte werk. Zo kunnen leerlingen de procedure vooraf herhalen; de oefening vervangt nooit de officiële veiligheidsinstructies of begeleiding.</p>
       </div>
       <div class="card card--grijs">
         <span class="tag tag--ink">Nederlands · feedbackgever</span>
@@ -598,7 +621,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       <div class="card card--grijs">
         <span class="tag tag--ink">Examens · oefenpartner</span>
         <p class="mts">Elke leerling krijgt een oefenexamen op eigen niveau, met extra vragen bij zijn zwakke plekken.</p>
-        <p style="margin:0"><strong>MEERWAARDE →</strong> differentiatie op maat voor 25 leerlingen tegelijk — handmatig onmogelijk. De leerling ontdekt zélf wat er nog niet zit.</p>
+        <p style="margin:0"><strong>MEERWAARDE →</strong> extra oefenvragen op maat voor meerdere leerlingen tegelijk — iets wat individueel organiseren tijd vraagt. De leerling ontdekt zélf wat er nog niet zit.</p>
       </div>
     </div>
     <div class="kern">
@@ -619,10 +642,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       </div>
       <div id="pd"></div>
       <div class="meter"><i id="pd-bar"></i></div>
-      <div class="meter-label"><span id="pd-label">EIGEN DENKARBEID GERED: 0%</span><span>DOEL: 100%</span></div>
-      <div class="verdict hide mt" id="pd-verdict">100% GERED — de opdracht leert weer iets. Vergelijk hierboven: zelfde essayonderwerp, compleet andere leerwinst.</div>
+      <div class="meter-label"><span id="pd-label" aria-live="polite">EIGEN DENKARBEID GERED: 0%</span><span>DOEL: 100%</span></div>
+      <div class="verdict hide mt" id="pd-verdict" aria-live="polite">100% GERED — de opdracht leert weer iets. Vergelijk hierboven: zelfde essayonderwerp, compleet andere leerwinst.</div>
       <div class="promptcard hide mt" id="pd-final">
-        <div class="pc-bar pc-bar--geel"><span>✓ DE GENEZEN PROMPT — DEEL MET JE LEERLINGEN</span><button class="btn btn-mini copybtn" type="button">KOPIEER</button></div>
+        <div class="pc-bar pc-bar--accent"><span>✓ DE GENEZEN PROMPT — DEEL MET JE LEERLINGEN</span><button class="btn btn-mini copybtn" type="button">KOPIEER</button></div>
         <pre>Ik zit in het 4e secundair. Voor geschiedenis moet ik zelf een essay schrijven over de industriële revolutie in België. Schrijf het essay niet voor mij. Stel me eerst 3 vragen over wat ik al weet. Help me daarna een eigen stelling te formuleren en geef me maximaal 3 tegenvragen die ik moet beantwoorden. Waar moet ik zelf bronnen zoeken? Geef nooit kant-en-klare zinnen.</pre>
       </div>
     </div>
@@ -639,7 +662,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <h2>Vertrouwen is goed. Controleren is de les.</h2>
       </div>
     </div>
-    <p class="sec-sub">De belangrijkste gewoonte die je leerlingen kunt bijbrengen: AI-output is een <strong>eerste versie van de waarheid, nooit de eindversie</strong>. Geef ze een vast afsluitritueel — vijf stappen, vijf letters:</p>
+    <p class="sec-sub">De belangrijkste gewoonte die je leerlingen kunt bijbrengen: AI-output is een <strong>mogelijke eerste versie, geen garantie op waarheid</strong>. Geef ze een vast afsluitritueel — vijf stappen, vijf letters:</p>
     <div class="grid g3 mt">
       <div class="card"><h3><span class="numchip">C</span> Controleer</h3><p>Klopt dit met je cursus en met wat je al wist? Voelt iets gek? Blijf bij dat gevoel — dat gevoel heet leren.</p></div>
       <div class="card"><h3><span class="numchip">H</span> Herkomst</h3><p>Bestaan de genoemde bronnen, mensen en jaartallen écht? Vraag altijd om bronnen — en controleer of ze bestaan. AI verzint er graag.</p></div>
@@ -648,7 +671,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
       <div class="card"><h3><span class="numchip">K</span> Kern</h3><p>Vat samen in drie zinnen, in eigen woorden. Lukt dat niet? Dan was het nog niet jouw kennis.</p></div>
       <div class="card card--ink">
         <h3 style="gap:8px">De 5 klassiekers</h3>
-        <p style="margin:0;font-size:.95rem">Waar AI het vaakst naast zit: ① verzonne bronnen ② jaartallen nét mis ③ vlotte algemeenheden zonder inhoud ④ meegaan met jouw mening ⑤ citaten die niemand ooit zei. Leer je leerlingen ze herkennen als oude bekenden.</p>
+        <p style="margin:0;font-size:.95rem">Waar AI het vaakst naast zit: ① verzonnen bronnen ② jaartallen nét mis ③ vlotte algemeenheden zonder inhoud ④ meegaan met jouw mening ⑤ citaten die niemand ooit zei. Leer je leerlingen ze herkennen als oude bekenden.</p>
       </div>
     </div>
 
@@ -671,14 +694,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
         <button class="btn btn--rood" id="hs-check" type="button">Controleer</button>
         <button class="btn btn--paper" id="hs-reset" type="button">↺ Opnieuw</button>
       </div>
-      <div class="verdict hide mt" id="hs-verdict"></div>
+      <div class="verdict hide mt" id="hs-verdict" aria-live="polite" aria-atomic="true"></div>
       <div id="hs-items" class="mt"></div>
     </div>
   </div>
 </section>
 
 <!-- ============ MODULE 6: KLAS ============ -->
-<section id="m6" class="sec--geel">
+<section id="m6" class="sec--accent">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">06</span>
@@ -689,10 +712,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
     </div>
     <p class="sec-sub">Regels helpen pas als de opdrachten ze ondersteunen. Zes opdrachtvormen die AI-gebruik óók zonder toezicht eerlijk houden:</p>
     <div class="grid g3 mt">
-      <div class="card"><h3><span class="numchip">1</span> Mondelinge verdediging</h3><p>Vijf minuten per leerling: waarom deze bronnen, deze structuur, deze keuzes? Wie zijn eigen werk niet kan uitleggen, heeft het niet zelf gemaakt.</p></div>
+      <div class="card"><h3><span class="numchip">1</span> Mondelinge verdediging</h3><p>Vijf minuten per leerling: waarom deze bronnen, deze structuur, deze keuzes? Als een leerling het eigen werk niet kan uitleggen, is dat aanleiding om door te vragen — geen automatisch bewijs van fraude.</p></div>
       <div class="card"><h3><span class="numchip">2</span> Procesdossier</h3><p>Lever meer in dan het eindproduct: conceptversies, promptgeschiedenis, AI-verklaring. Het spoor van het denken wordt het bewijs van het leren.</p></div>
-      <div class="card"><h3><span class="numchip">3</span> Persoonlijke koppeling</h3><p>Eis een element dat AI niet kan verzinnen: een interview met grootmoeder, een foto uit je eigen straat, een eigen meting in het atelier.</p></div>
-      <div class="card"><h3><span class="numchip">4</span> In de klas schrijven</h3><p>Een deel van de tekst of berekening ontstaat in de klas, op papier of in een afgesloten document. Zo koppel je het eindwerk aan een AI-loos moment.</p></div>
+      <div class="card"><h3><span class="numchip">3</span> Persoonlijke koppeling</h3><p>Vraag om controleerbaar eigen materiaal: bijvoorbeeld een echt afgenomen interview, eigen foto’s met context of een meting in het atelier. AI kan fictief materiaal verzinnen; laat leerlingen daarom proces en herkomst aantonen.</p></div>
+      <div class="card"><h3><span class="numchip">4</span> In de klas schrijven</h3><p>Een deel van de tekst of berekening ontstaat in de klas, op papier of in een afgesproken werkomgeving. Zo verzamel je aanvullend bewijs van het eigen proces, zonder daaruit alleen conclusies over auteurschap te trekken.</p></div>
       <div class="card"><h3><span class="numchip">5</span> AI als opdracht</h3><p>Draai het om: laat leerlingen een AI-tekst opleveren mét foutenanalyse — "wat klopt niet, hoe weet je dat, hoe fix je het?" Kritisch checken wérdt de leerstof.</p></div>
       <div class="card"><h3><span class="numchip">6</span> Roterende rollen</h3><p>In groepswerk: één AI-coördinator (bedient AI, vult de verklaring in), een factchecker, een redacteur en een criticus. Zo wordt AI-gebruik bespreekbaar in plaats van verstopt.</p></div>
     </div>
@@ -718,11 +741,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
             <label class="rule"><input type="checkbox"><span>Ik laat AI hints geven, geen oplossingen.</span></label>
             <label class="rule"><input type="checkbox"><span>Als AI het hele werk deed, heb ik niets geleerd — dan doe ik het opnieuw.</span></label>
           </div>
-          <div class="scorebar mt" id="contract-count" style="margin-top:16px">0 REGELS GEKOZEN — KIES MINSTENS 5</div>
+          <div class="scorebar mt" id="contract-count" aria-live="polite" style="margin-top:16px">0 REGELS GEKOZEN — KIES MINSTENS 5</div>
         </div>
         <div>
           <div class="contract">
-            <div class="pc-bar pc-bar--geel"><span>HET KLASCONTRACT</span><button class="btn btn-mini copybtn-contract" id="contract-copy" type="button">KOPIEER</button></div>
+            <div class="pc-bar pc-bar--accent"><span>HET KLASCONTRACT</span><button class="btn btn-mini copybtn-contract" id="contract-copy" type="button">KOPIEER</button></div>
             <ol id="contract-list"><li>(Nog geen regels aangevinkt — kies links je selectie.)</li></ol>
           </div>
           <div class="tip"><b class="t">Praktisch</b>Hang het contract af en laat elke leerling er zijn initialen op zetten. Eigenaarschap werkt beter dan verbod — en bij discussies heb je iets om naar te wijzen.</div>
@@ -734,7 +757,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,label:focus-visible{out
     <p class="sec-sub mt" style="margin-top:10px">Bij elke groene of oranje opdracht hoort een verklaring. Ze maakt AI-gebruik bespreekbaar, eerlijk en zichtbaar — en geeft jou meteen aanknopingspunten voor het gesprek.</p>
     <div class="grid g2 mt">
       <div class="promptcard" style="margin-top:0">
-        <div class="pc-bar"><span>TEMPLATE · AI-VERKLARING</span><button class="btn btn--geel btn-mini copybtn" type="button">KOPIEER</button></div>
+        <div class="pc-bar"><span>TEMPLATE · AI-VERKLARING</span><button class="btn btn--accent btn-mini copybtn" type="button">KOPIEER</button></div>
         <pre>=== AI-VERKLARING ===
 Naam: ______________________
 Vak: ____________  Opdracht: ____________
@@ -780,14 +803,15 @@ Ondertekening: ____________</pre>
         <label class="chk"><input type="checkbox"><span>Ik test de AI-verklaring binnen de maand bij minstens één opdracht.</span></label>
       </div>
       <div>
-        <div class="verdict" id="chk-verdict" style="background:var(--geel);color:var(--ink)">ZELFCHECK: 0/8</div>
+        <div class="verdict" id="chk-verdict" aria-live="polite" style="background:var(--accent);color:var(--ink)">ZELFCHECK: 0/8</div>
         <div class="tip" style="margin-top:16px"><b class="t">Neem morgen mee naar de klas</b>Eén klasgroep, één groen-usecase, één oranje-opdracht mét AI-verklaring, en het klascontract aan de muur. Meer heb je niet nodig om te starten.</div>
         <div class="card" style="margin-top:20px">
           <h3 style="gap:8px">Jouw certificaat</h3>
-          <p>Vul je naam in en print (of screenshot) je bewijs dat je de regisseur bleef — zelfs tijdens een workshop over AI.</p>
+          <p>Vul je naam in en maak een persoonlijk engagementscertificaat. Je kunt het daarna afdrukken of als pdf bewaren.</p>
           <div class="dip-row">
-            <input type="text" id="dip-name" maxlength="60" placeholder="jouw naam…" aria-label="jouw naam">
-            <button class="btn btn--geel" id="dip-btn" type="button">Druk mijn certificaat</button>
+            <input type="text" id="dip-name" maxlength="60" placeholder="jouw naam…" aria-label="jouw naam" required>
+            <button class="btn btn--accent" id="dip-btn" type="button">Maak certificaat</button>
+            <button class="btn btn--paper" id="cert-print-btn" type="button" disabled>Print certificaat</button>
           </div>
         </div>
       </div>
@@ -795,18 +819,31 @@ Ondertekening: ____________</pre>
     <div class="cert" id="cert">
       <span class="stamp">Denkt zelf eerst</span>
       <div class="c-top">TSM ✕ GEN-AI · WORKSHOP "SAMENWERKEN, NIET OVERNEMEN"</div>
-      <h3>Certificaat van de regisseur</h3>
+      <h3>Engagementscertificaat</h3>
       <p>Hierbij verklaart</p>
       <div class="c-name" id="cert-name">—</div>
-      <p style="margin:0">dat generatieve AI vanaf nu adviseert,<br>maar dat de denk- en keuzearbeid in zijn klas eigen handen heeft.</p>
+      <p style="margin:0">dat generatieve AI kan adviseren,<br>maar dat de leerling zelf blijft denken en keuzes maken.</p>
       <div class="c-meta"><span id="cert-date"></span><br>Workshop door Steven Vandersmissen · TSM</div>
     </div>
   </div>
 </section>
 
+<section id="bronnen">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Bronnen</span>
+      <h2>Verder lezen</h2>
+    </div>
+    <p>Deze workshop combineert didactische aanbevelingen met feitelijke claims. Controleer actuele richtlijnen en de voorwaarden van de AI-tools die je gebruikt.</p>
+    <p><a href="https://education.ec.europa.eu/nl/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence" target="_blank" rel="noopener noreferrer">Europese richtsnoeren voor AI in het onderwijs</a></p>
+    <p><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">W3C: WCAG-richtlijn over tekstcontrast</a></p>
+    <p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11270031/" target="_blank" rel="noopener noreferrer">Wetenschappelijke literatuur over leerstijlen</a></p>
+  </div>
+</section>
+
 </main>
 
-<div class="mq mq--geel" aria-hidden="true">
+<div class="mq mq--accent" aria-hidden="true">
   <div class="mq-track">
     <span>BLIJF KRITISCH ★ CHECK JE BRONNEN ★ AI ADVISEERT, JIJ BESLIST ★ EIGEN WERK, EIGEN NAAM ★&nbsp;</span>
     <span>BLIJF KRITISCH ★ CHECK JE BRONNEN ★ AI ADVISEERT, JIJ BESLIST ★ EIGEN WERK, EIGEN NAAM ★&nbsp;</span>
@@ -892,12 +929,13 @@ function renderQuiz(){
       knoppen[k]=b;
       b.addEventListener("click",function(){
         if(d.classList.contains("gedaan"))return;
-        d.classList.add("gedaan");beantwoord++;
+        d.classList.add("gedaan");$$("button",d).forEach(function(knop){knop.disabled=true});beantwoord++;
         var goed=(k===q.a);if(goed)juist++;
         knoppen[q.a].classList.add("correct");
         if(!goed)b.classList.add("chosen-wrong");
         var fb=document.createElement("div");
         fb.className="lt-fb "+({rood:"w",oranje:"o",groen:"r"})[q.a];
+        fb.setAttribute("role","status");fb.setAttribute("aria-live","polite");
         fb.textContent=(goed?"JUIST — ":"NIET JUIST. Het juiste signaal is "+q.a.toUpperCase()+" — ")+q.fb;
         d.appendChild(fb);update();
       });
@@ -955,7 +993,9 @@ function pdRender(){
         pdJuist++;pdMeter();
         b.classList.add("is-right");
         $$(".pd-opt",d).forEach(function(x){x.disabled=true});
-        var fb=document.createElement("div");fb.className="pd-fb on";fb.textContent="JUIST — "+o.fb;
+        var fb=document.createElement("div");fb.className="pd-fb on";
+        fb.setAttribute("role","status");fb.setAttribute("aria-live","polite");
+        fb.textContent="JUIST — "+o.fb;
         d.appendChild(fb);
         var nx=document.createElement("button");nx.type="button";nx.className="btn btn--ink btn-mini pd-next";
         nx.textContent=(pdStap===PD.length-1)?"Bekijk het resultaat ↓":"Volgende beslissing →";
@@ -963,7 +1003,9 @@ function pdRender(){
         d.appendChild(nx);
       }else{
         b.classList.add("is-wrong");b.disabled=true;
-        var fb2=document.createElement("div");fb2.className="pd-fb on";fb2.textContent="NIET DIT — "+o.fb;
+        var fb2=document.createElement("div");fb2.className="pd-fb on";
+        fb2.setAttribute("role","status");fb2.setAttribute("aria-live","polite");
+        fb2.textContent="NIET DIT — "+o.fb;
         d.appendChild(fb2);
       }
     });
@@ -975,17 +1017,18 @@ pdMeter();pdRender();
 
 /* ---------- OEFENING 3 · hallucinatiejager ---------- */
 var HS=[
- {t:"De menselijke hersenen wegen ongeveer 1,4 kilogram en bestaan voor ongeveer 60% uit vet.",fout:false,fb:"Klopt: zo'n 1,4 kg en ruim de helft vet. Merk op: dit soort zinnen klopt vaak — daarom zijn de foute er zo gevaarlijk."},
+ {t:"De volwassen menselijke hersenen wegen gemiddeld ongeveer 1,4 kilogram. Lipiden vormen ongeveer 50–60% van hun droge gewicht.",fout:false,fb:"Klopt met een belangrijke nuance: ongeveer 50–60% van het droge hersenweefsel bestaat uit lipiden; dat percentage slaat niet op het totale gewicht inclusief water."},
  {t:"Onderzoek van professor Hendrik Verbrandt (Universiteit van Antwerpen, 1974) toonde aan dat we maar 10% van onze hersenen gebruiken.",fout:true,fb:"Dubbel fout: de bron bestaat niet (verzonnen naam + jaartal) én de \u201c10%-mythe\u201d is een hardnekkig fabeltje. AI combineert graag een bronstijl die echt klinkt met onzin. Check: zoek de naam op."},
  {t:"De hersenen maken maar 2% van je lichaamsgewicht uit, maar verbruiken ongeveer 20% van je energie.",fout:false,fb:"Klopt grofweg: het duurste orgaan per kilo dat we hebben."},
  {t:"Het brein bevat ruim 500 miljard neuronen die onderling met tot 400 km/u communiceren.",fout:true,fb:"Eerste helft fout: het gaat om circa 86 miljard neuronen, geen 500 miljard. De snelheid klopt wél grofweg voor de snelste zenuwbanen. Typisch AI: een juist detail naast een gigantische misrekening."},
- {t:"Na de puberteit maakt het brein geen nieuwe cellen meer aan; wat je dan nog leert, is verspilde moeite.",fout:true,fb:"Fout: ook op volwassen leeftijd vormen zich nieuwe neuronen en verbindingen (neuroplasticiteit). Let op de truc: een halfwaarheid met een foute conclusie eraan vastgeknoopt."},
- {t:"Tijdens de slaap verwerk het brein de informatie van die dag, wat belangrijk is voor je geheugen.",fout:false,fb:"Klopt: slaap en geheugen zijn nauw verbonden. Slaap is dus leermateriaal."},
- {t:"Volgens de VARK-theorie heeft iedereen \u00e9\u00e9n vaste leerstijl — visueel, auditief of kinesthetisch — en leren leerlingen alleen als de les daarop aansluit.",fout:true,fb:"Fout: vaste leerstijl-types zijn in het onderzoek vrijwel weerlegd; iedereen leert via alle kanalen. AI herhaalt dit soort populaire mythes graag, omdat ze overal op het internet staan."}
+ {t:"Na de puberteit maakt het brein geen nieuwe cellen meer aan; wat je dan nog leert, is verspilde moeite.",fout:true,fb:"Fout: leren blijft mogelijk dankzij neuroplasticiteit: verbindingen in de hersenen kunnen veranderen. Of en in welke mate er nieuwe neuronen ontstaan in de volwassen menselijke hippocampus is onderwerp van wetenschappelijk onderzoek. Neuroplasticiteit is niet hetzelfde als neurogenese."},
+ {t:"Tijdens de slaap verwerkt het brein informatie; slaap speelt een belangrijke rol bij geheugen en leren.",fout:false,fb:"Klopt: slaap en geheugen zijn nauw verbonden. Slaap is dus leermateriaal."},
+ {t:"Volgens de VARK-theorie heeft iedereen \u00e9\u00e9n vaste leerstijl — visueel, auditief of kinesthetisch — en leren leerlingen alleen als de les daarop aansluit.",fout:true,fb:"Fout: er is onvoldoende overtuigend bewijs om onderwijs standaard af te stemmen op vaste leerstijltypes. Dat betekent niet dat afwisseling in uitleg of rekening houden met individuele behoeften onbelangrijk is."}
 ];
 var hsBox=$("#hs-text"),hsItems=$("#hs-items"),hsVerdict=$("#hs-verdict");
 function hsRender(){
   hsBox.innerHTML="";hsItems.innerHTML="";hsVerdict.classList.add("hide");
+  $("#hs-check").disabled=false;
   HS.forEach(function(s){
     var b=document.createElement("button");b.type="button";b.className="hs";
     b.textContent=s.t;b.setAttribute("aria-pressed","false");
@@ -1002,7 +1045,7 @@ $("#hs-check").addEventListener("click",function(){
   var knoppen=$$(".hs",hsBox);
   knoppen.forEach(function(b,i){
     var s=HS[i];var gekozen=b.classList.contains("sel");
-    b.classList.remove("sel");
+    b.classList.remove("sel");b.setAttribute("aria-pressed","false");b.disabled=true;
     if(s.fout&&gekozen){b.classList.add("hit");hits++;items.push(["bad","HALLUCINATIE GEVONDEN",s.fb])}
     else if(s.fout&&!gekozen){b.classList.add("miss");misses++;items.push(["bad","ONTSNAPT AAN DE JAGER",s.fb])}
     else if(!s.fout&&gekozen){b.classList.add("falsealarm");vals++;items.push(["meh","ONTERECHT VERDACHT — DEZE KLOPT",s.fb])}
@@ -1024,6 +1067,7 @@ $("#hs-check").addEventListener("click",function(){
   else if(hits>=2)t+=" Goed bezig — reken nu af met de zinnen die ontsnapten en lees hun uitleg.";
   else t+=" De jager werd gejaagd. Herlees de CHECK-stappen hierboven en probeer opnieuw.";
   hsVerdict.textContent=t;hsVerdict.classList.remove("hide");
+  $("#hs-check").disabled=true;
 });
 $("#hs-reset").addEventListener("click",hsRender);
 hsRender();
@@ -1038,8 +1082,8 @@ function contractUpdate(){
   }else{
     gekozen.forEach(function(r){var li=document.createElement("li");li.textContent=$("span",r).textContent;ol.appendChild(li)});
   }
-  $("#contract-count").textContent=gekozen.length+" REGELS GEKOZEN"+(gekozen.length>0&&gekozen.length<5?" — KIES MINSTENS 5":"");
-  $("#contract-copy").disabled=(gekozen.length===0);
+  $("#contract-count").textContent=gekozen.length+" REGELS GEKOZEN"+(gekozen.length<5?" — KIES "+(5-gekozen.length)+" MEER":" — KLAAR OM TE KOPIËREN");
+  $("#contract-copy").disabled=(gekozen.length<5);
 }
 regels.forEach(function(r){
   var cb=$("input",r);
@@ -1074,10 +1118,15 @@ chkUpdate();
 /* ---------- certificaat ---------- */
 $("#dip-btn").addEventListener("click",function(){
   var naam=$("#dip-name").value.trim();
-  $("#cert-name").textContent=naam||"(naam vergeten in te vullen — klassiek)";
-  $("#cert-date").textContent="Gedrukt op "+new Date().toLocaleDateString("nl-BE",{day:"numeric",month:"long",year:"numeric"});
+  if(!naam){$("#dip-name").reportValidity();return;}
+  $("#cert-name").textContent=naam;
+  $("#cert-date").textContent="Gegenereerd op "+new Date().toLocaleDateString("nl-BE",{day:"numeric",month:"long",year:"numeric"});
   var c=$("#cert");c.style.display="block";
-  c.scrollIntoView({behavior:"smooth",block:"center"});
+  $("#cert-print-btn").disabled=false;
+  c.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+});
+$("#cert-print-btn").addEventListener("click",function(){
+  if(!this.disabled){window.print();}
 });
 
 $("#jaar").textContent=new Date().getFullYear();
